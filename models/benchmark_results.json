@@ -1,0 +1,23 @@
+{
+  "sklearn_fp32": {
+    "p50_ms": 0.21607899999764868,
+    "p95_ms": 0.3201312499868435,
+    "throughput_rows_per_sec": 1008836.3980016644,
+    "accuracy": 1.0,
+    "size_kb": 87.3
+  },
+  "onnx_fp32": {
+    "p50_ms": 0.010619499988706593,
+    "p95_ms": 0.017557949989566165,
+    "throughput_rows_per_sec": 1691978.6675272514,
+    "accuracy": 1.0,
+    "size_kb": 11.2
+  },
+  "onnx_int8_quantized": {
+    "p50_ms": 0.013658999989729637,
+    "p95_ms": 0.023673800001233754,
+    "throughput_rows_per_sec": 2516416.471970999,
+    "accuracy": 1.0,
+    "size_kb": 6.6
+  }
+}

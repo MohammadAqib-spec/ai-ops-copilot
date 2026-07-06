@@ -1,0 +1,32 @@
+{
+  "amount": {
+    "ks_statistic": 0.0,
+    "p_value": 1.0,
+    "drifted": false
+  },
+  "tx_hour": {
+    "ks_statistic": 0.0,
+    "p_value": 1.0,
+    "drifted": false
+  },
+  "tx_count_last_hour": {
+    "ks_statistic": 0.0,
+    "p_value": 1.0,
+    "drifted": false
+  },
+  "avg_amount_last_7d": {
+    "ks_statistic": 0.0,
+    "p_value": 1.0,
+    "drifted": false
+  },
+  "location_risk_score": {
+    "ks_statistic": 0.0,
+    "p_value": 1.0,
+    "drifted": false
+  },
+  "_summary": {
+    "n_features_drifted": 0,
+    "total_features": 5,
+    "dataset_drift_detected": false
+  }
+}

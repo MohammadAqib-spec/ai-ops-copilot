@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint (flake8, non-blocking on style, blocking on syntax errors)
+        run: |
+          pip install flake8
+          flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Generate data
+        run: python data/generate_data.py --rows 5000 --anomaly_rate 0.02
+
+      - name: Train model
+        run: python src/train_model.py
+
+      - name: Optimize model (ONNX + quantization)
+        run: python src/optimize_model.py
+
+      - name: Run benchmark
+        run: python src/benchmark.py
+
+      - name: Run tests
+        run: pytest tests/ -v
+
+      - name: Build Docker image
+        run: docker build -t ai-ops-copilot:ci .
