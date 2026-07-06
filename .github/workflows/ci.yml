@@ -44,7 +44,7 @@ jobs:
         run: python src/benchmark.py
 
       - name: Run tests
-        run: pytest tests/ -v
+        run: python -m pytest/ -v
 
       - name: Build Docker image
         run: docker build -t ai-ops-copilot:ci .
